@@ -12,6 +12,44 @@
         <a class="btn btn-info form-control text-white" href="#">Create New Book</a>
     </div>
 
+    <div class="col-12 border p-3 mt-3">
+        <form action="/" method="post">
+            @if (Model.Books.Count() > 0)
+            {
+                <table class="table table-striped border w-100">
+                    <tr class="table-secondary w-100">
+                        <th >
+                        <label asp-for="Books.FirstOrDefault().Name"></label>
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author)*@
+                            <label asp-for="Books.FirstOrDefault().Author"></label>
+                        </th>
+                        
+                            @foreach (var item in Model.Books)
+                            {
+                           
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Author)
+                        </td>
+                    </tr>
+                           }  
+                </table>
+            }
+            else
+            {
+            <p>No Books Available.</p>
+            }
+        </form>
+
+    </div>
+
+
+
 </div>   
 
 
